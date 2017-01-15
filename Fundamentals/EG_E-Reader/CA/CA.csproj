@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Book.cs" />
     <Compile Include="BookFormat.cs" />
+    <Compile Include="BookReader.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="ImageBook.cs" />
     <Compile Include="ImageBookReader.cs" />

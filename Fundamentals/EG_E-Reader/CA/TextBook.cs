@@ -5,9 +5,6 @@ namespace CA
 {
     class TextBook : Book
     {
-        private int pageSize = 35;
-        private int currentPage;
-
         public string Content { get; private set; }
 
         public TextBook(string title, string author, string content, BookFormat format = BookFormat.TXT)

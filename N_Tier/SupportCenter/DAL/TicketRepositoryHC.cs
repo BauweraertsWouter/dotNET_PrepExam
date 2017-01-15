@@ -95,9 +95,9 @@ namespace SC.DAL
                 State = TicketState.Open
             };
 
-            tickets.Add(t1);
-            tickets.Add(t2);
-            tickets.Add(ht1);
+            this.CreateTicket(t1);
+            this.CreateTicket(t2);
+            this.CreateTicket(ht1);
 
             foreach(TicketResponse tr in t1.Responses)
             {

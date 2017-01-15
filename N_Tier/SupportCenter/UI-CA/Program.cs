@@ -20,9 +20,15 @@ namespace SC.UI.CA
             int? keuze;
             do
             {
-                ShowMenu();
-                keuze = DetectUserInput();
-                RedirectToMenuAction(keuze);
+                try
+                {
+                    ShowMenu();
+                    keuze = DetectUserInput();
+                    RedirectToMenuAction(keuze);
+                }catch(Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
                 WaitForNewLineAndClearConsole();
             } while (!exit);
         }
@@ -48,7 +54,16 @@ namespace SC.UI.CA
                     actionTrigger = delegate () { ShowAllTickets(); };
                     break;
                 case 2:
+                    actionTrigger = delegate () { ShowTicketDetails(); };
+                    break;
+                case 3:
+                    actionTrigger = delegate () { ShowTicketResponsesOfTicket(); };
+                    break;
+                case 4:
                     actionTrigger = delegate () { CreateNewTicket(); };
+                    break;
+                case 5:
+                    actionTrigger = delegate () { CreateAnswerToTicket(); };
                     break;
                 default:
                     Console.Clear();
@@ -56,6 +71,49 @@ namespace SC.UI.CA
                     return;
             }
             actionTrigger();
+        }
+
+        private static void CreateAnswerToTicket()
+        {
+            Console.Write("Ticketnummer: ");
+            string str = Console.ReadLine();
+            int ticket;
+            if (!int.TryParse(str, out ticket))
+                throw new ArgumentException("Ongeldig ticketnummer");
+            Console.Write("Client answer (j/n)?");
+            bool client = false;
+            if (Console.ReadLine().ToLower() == "j")
+                client = true;
+            Console.Write("Antwoord: ");
+            string answer = Console.ReadLine();
+            mgr.AddTicketResponse(ticket, answer, client);
+        }
+
+        private static void ShowTicketResponsesOfTicket()
+        {
+            Console.Write("Ticketnummer: ");
+            string str = Console.ReadLine();
+            int ticket;
+            if (!Int32.TryParse(str, out ticket))
+                throw new ArgumentException("Ongeldig ticketnummer");
+            if(mgr.GetTicketResponses(ticket).Count() == 0)
+                Console.WriteLine("Geen antwoorden gevonden");
+            else
+                foreach(TicketResponse tr in mgr.GetTicketResponses(ticket))
+                {
+                    Console.WriteLine(tr.GetInfo());
+                }
+        }
+
+        private static void ShowTicketDetails()
+        {
+            Console.Write("Ticketnummer: ");
+            string str = Console.ReadLine();
+            int choice;
+            if (!Int32.TryParse(str, out choice))
+                throw new ArgumentException("ONGELDIGE KEUZE!");
+            Ticket t = mgr.GetTicket(choice);
+            Console.WriteLine(t.GetDetails());
         }
 
         private static void CreateNewTicket()
@@ -102,7 +160,10 @@ namespace SC.UI.CA
             Console.WriteLine(title);
             Console.WriteLine(line);
             Console.WriteLine("1) Toon alle tickets");
-            Console.WriteLine("2) Maak een nieuw ticket");
+            Console.WriteLine("2) Toon details van een ticket");
+            Console.WriteLine("3) Toon de antwoorden van een ticket");
+            Console.WriteLine("4) Maak een nieuw ticket");
+            Console.WriteLine("5) Geef een antwoord op een ticket");
             Console.WriteLine("0) Afsluiten");
             Console.Write("Keuze: ");
         }

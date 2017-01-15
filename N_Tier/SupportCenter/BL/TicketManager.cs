@@ -71,7 +71,7 @@ namespace SC.BL
 
         public IEnumerable<TicketResponse> GetTicketResponses(int ticketNumber)
         {
-            return repo.ReadAllTicketResponses(ticketNumber);
+            return repo.ReadAllTicketResponsesOfTicket(ticketNumber);
         }
 
         public TicketResponse AddTicketResponse(int ticketNumber, string response, bool isClientResponse)

@@ -15,7 +15,7 @@ namespace SC.DAL
         void UpdateTicket(Ticket t);
         void DeleteTicket(int ticketNumber);
 
-        IEnumerable<TicketResponse> ReadAllTicketResponses(int ticketNumber);
+        IEnumerable<TicketResponse> ReadAllTicketResponsesOfTicket(int ticketNumber);
         TicketResponse CreateTicketResponse(TicketResponse tr);
     }
 }

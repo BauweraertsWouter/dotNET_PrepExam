@@ -14,6 +14,8 @@ namespace SC.DAL
 
         public TicketRepositoryHC()
         {
+            tickets = new List<Ticket>();
+            responses = new List<TicketResponse>();
             Seed();
         }
 

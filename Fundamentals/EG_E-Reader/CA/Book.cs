@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CA
 {
-    abstract class Book : INavigatable
+    abstract class Book
     {
         //private int isbn;
 
@@ -35,8 +35,5 @@ namespace CA
         {
             return string.Format("Book: '{0}', by '{1} ({2}, {3})", this.Title, this.Author, this.ISBN, this.Format);
         }
-
-        public abstract object Previous();
-        public abstract object Next();
     }
 }

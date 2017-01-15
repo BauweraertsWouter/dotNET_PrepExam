@@ -30,7 +30,7 @@ namespace CA
             Console.WriteLine(b3.ToString());
 
             string text = "C# is one of the programming languages designed for the Common Language Infrastructure";
-            INavigatable tb = new TextBook("C# Language", "KdG", text, BookFormat.PDF);
+            IReader tb = new TextBookReader(new TextBook("C# Language", "KdG", text, BookFormat.PDF));
             Console.WriteLine(tb.ToString());
 
             Console.WriteLine("Next: " + tb.Next());
@@ -44,7 +44,7 @@ namespace CA
             Console.WriteLine();
 
             char[] images2 = { 'A', 'B', 'C', 'D' };
-            INavigatable ib2 = new ImageBook("Some Images", "KdG", images);
+            IReader ib2 = new ImageBookReader(new ImageBook("Some Images", "KdG", images));
             Console.WriteLine(ib2.ToString());
 
             Console.WriteLine("Next: " + ib2.Next());

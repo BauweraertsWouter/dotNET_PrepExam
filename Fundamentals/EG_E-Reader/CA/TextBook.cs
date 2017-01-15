@@ -21,35 +21,5 @@ namespace CA
             return string.Format("TextBook: '{0}', by {1} ({2} chars",
                 Title, Author, Content.Count<char>());
         }
-
-        public override object Previous()
-        {
-            if (currentPage > 1)
-            {
-                currentPage--;
-            }
-            else currentPage = 1;
-
-            return GetPage(currentPage);
-        }
-
-        public override object Next()
-        {
-            double numberOfPages = Math.Ceiling((double)Content.Length / pageSize);
-            if ((double)currentPage < numberOfPages) currentPage++;
-            else currentPage = 1;
-
-            return GetPage(currentPage);
-        }
-
-        private object GetPage(int currentPage)
-        {
-            int remainingTextSize = Content.Length - (pageSize * (currentPage - 1));
-            if (remainingTextSize < 0) remainingTextSize = 0;
-
-            return Content.Substring((currentPage - 1) * pageSize, Math.Min(pageSize, remainingTextSize));
-        }
-
-        
     }
 }

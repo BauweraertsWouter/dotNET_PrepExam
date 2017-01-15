@@ -1,1 +1,6 @@
 E:\KDG_2\dotNET\Voorbereiding Examen\Fundamentals\EG_E-Reader\CA\bin\Debug\CA.exe.config
+E:\KDG_2\dotNET\Voorbereiding Examen\Fundamentals\EG_E-Reader\CA\bin\Debug\CA.exe
+E:\KDG_2\dotNET\Voorbereiding Examen\Fundamentals\EG_E-Reader\CA\bin\Debug\CA.pdb
+E:\KDG_2\dotNET\Voorbereiding Examen\Fundamentals\EG_E-Reader\CA\obj\Debug\CA.csprojResolveAssemblyReference.cache
+E:\KDG_2\dotNET\Voorbereiding Examen\Fundamentals\EG_E-Reader\CA\obj\Debug\CA.exe
+E:\KDG_2\dotNET\Voorbereiding Examen\Fundamentals\EG_E-Reader\CA\obj\Debug\CA.pdb

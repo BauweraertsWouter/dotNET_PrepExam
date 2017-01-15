@@ -11,6 +11,11 @@ namespace SC.DAL
     {
         Ticket CreateTicket(Ticket ticket);
         IEnumerable<Ticket> ReadTickets();
+        Ticket ReadTicket(int ticketNumber);
+        void UpdateTicket(Ticket t);
+        void DeleteTicket(int ticketNumber);
 
+        IEnumerable<TicketResponse> ReadAllTicketResponses(int ticketNumber);
+        TicketResponse CreateTicketResponse(TicketResponse tr);
     }
 }

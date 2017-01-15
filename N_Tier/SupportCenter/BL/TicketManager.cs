@@ -53,5 +53,38 @@ namespace SC.BL
         {
             return repo.ReadTickets();
         }
+
+        public Ticket GetTicket(int ticketNumber)
+        {
+            return repo.ReadTicket(ticketNumber);
+        }
+
+        public void changeTicket(Ticket ticket)
+        {
+            repo.UpdateTicket(ticket);
+        }
+
+        public void RemoveTicket(int ticketNumber)
+        {
+            repo.DeleteTicket(ticketNumber);
+        }
+
+        public IEnumerable<TicketResponse> GetTicketResponses(int ticketNumber)
+        {
+            return repo.ReadAllTicketResponses(ticketNumber);
+        }
+
+        public TicketResponse AddTicketResponse(int ticketNumber, string response, bool isClientResponse)
+        {
+            TicketResponse tr = new TicketResponse()
+            {
+                Date = DateTime.Now,
+                Text = response,
+                IsClientResponse = isClientResponse,
+                Ticket = GetTicket(ticketNumber)
+            };
+
+            return repo.CreateTicketResponse(tr);
+        }
     }
 }

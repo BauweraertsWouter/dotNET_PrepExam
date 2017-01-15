@@ -109,5 +109,37 @@ namespace SC.DAL
                 responses.Add(tr);
             }
         }
+
+        public Ticket ReadTicket(int ticketNumber)
+        {
+            return tickets.SingleOrDefault<Ticket>(t => t.TicketNumber == ticketNumber);
+        }
+
+        public void UpdateTicket(Ticket t)
+        {
+            //Everything stays in memory. Updates don't need to be persisted
+        }
+
+        public void DeleteTicket(int ticketNumber)
+        {
+            tickets.Remove(tickets.SingleOrDefault<Ticket>(t => t.TicketNumber == ticketNumber));
+            responses.RemoveAll(r => r.Ticket.TicketNumber == ticketNumber);
+        }
+
+        public IEnumerable<TicketResponse> ReadAllTicketResponsesOfTicket(int ticketNumber)
+        {
+            return ReadTicket(ticketNumber).Responses;
+        }
+
+        public TicketResponse CreateTicketResponse(TicketResponse tr)
+        {
+            tr.Id = responses.Count() + 1;
+            int ticket = tr.Ticket.TicketNumber;
+            if (ReadTicket(ticket).Responses == null)
+                ReadTicket(ticket).Responses = new List<TicketResponse>();
+            ReadTicket(ticket).Responses.Add(tr);
+            responses.Add(tr);
+            return tr;
+        }
     }
 }
